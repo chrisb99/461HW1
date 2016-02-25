@@ -61,17 +61,17 @@
     
     <servlet>
 
-        <servlet-name>oldguestbook</servlet-name>
+        <servlet-name>oldsign</servlet-name>
 
-        <servlet-class>guestbook.OldGuestbookServlet</servlet-class>
+        <servlet-class>guestbook.OldSignGuestbookServlet</servlet-class>
 
     </servlet>
 
     <servlet-mapping>
 
-        <servlet-name>oldguestbook</servlet-name>
+        <servlet-name>oldsign</servlet-name>
 
-        <url-pattern>/oldguestbook</url-pattern>
+        <url-pattern>/oldsign</url-pattern>
 
     </servlet-mapping>
     

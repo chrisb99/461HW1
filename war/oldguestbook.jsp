@@ -2,21 +2,35 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Collections" %>
 <%@ page import="com.googlecode.objectify.Objectify" %>
-<%@ page import="com.googlecode.objectify.ObjectifyService" %>>
+<%@ page import="com.googlecode.objectify.ObjectifyService" %>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
-  <head>
+
+<head>
    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style type="text/css">
+     body {
+          background-color:AliceBlue;
+          text-decoration: bold;
+          text-size: 1em;
+          font-family: 'Tangerine', serif;
+          font-size: 20px;
+      }
+    </style>
+  </head>
 	<body>
 
+<a href= "/ofyguestbook.jsp">Back</a>
+<p><center><h1>Old comments:</h1></center></p>
 <%
     String guestbookName = request.getParameter("guestbookName");
     if (guestbookName == null) {
-        guestbookName = "";
+        guestbookName = "HomeWork1";
     }
     pageContext.setAttribute("guestbookName", guestbookName);
     UserService userService = UserServiceFactory.getUserService();
@@ -24,8 +38,6 @@
     if (user != null) {
       pageContext.setAttribute("user", user);
 %>
-<a href= "ofyguestbook.jsp">Back</a>
-<p>Old comments:</p>
 
 <%
     } else {
@@ -41,7 +53,7 @@
 	Collections.sort(greetings); 
     if (greetings.isEmpty()) {
 %>
-        <p>Blog '${fn:escapeXml(guestbookName)}' has no messages.</p>
+        <p><center>Blog '${fn:escapeXml(guestbookName)}' has no messages.</center></p>
 
 <%
     } else {
@@ -53,8 +65,8 @@
                 pageContext.setAttribute("greeting_user", greeting.getUser());
 %>
 
-                <p><b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:</p>
-                <blockquote>${fn:escapeXml(greeting_content)}</blockquote>
+                <p><center><b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:</center></p>
+                <blockquote><center>${fn:escapeXml(greeting_content)}</center></blockquote>
             
 <%
             }
@@ -72,5 +84,5 @@
  
 
   </body>
- </head>
+
 </html>
